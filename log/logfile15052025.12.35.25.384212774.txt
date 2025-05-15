@@ -1,0 +1,6 @@
+2025/05/15 12:35:25 main.go:18: [ERROR] log file created
+2025/05/15 12:35:25 dbconnection.go:14: Dbconnection (+) 
+2025/05/15 12:35:25 dbconfig.go:47: DB_Details (+) 
+2025/05/15 12:35:25 dbconfig.go:63: DB_Details (-) 
+2025/05/15 12:35:25 dbconfig.go:68: connectionpoolConfig (+) 
+2025/05/15 12:35:25 dbconfig.go:113: connectionpoolConfig (-) 
