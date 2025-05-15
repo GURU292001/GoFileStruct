@@ -11,7 +11,6 @@ func BuildConnection() error {
 		log.Println("Error (DCBC01) ", lErr.Error())
 		return lErr
 	}
-
 	log.Println("BuildConnection (-) ")
 	return lErr
 }

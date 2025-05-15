@@ -1,7 +1,7 @@
 Db_Server = "localhost"
 Db_Port = 3306
 Db_User = "root"
-Db_Password = "root@123"
+Db_Password = "root"
 Db_Database = "salesanalytics"
 Db_Name = "mysql"
 Db_Type = ""
