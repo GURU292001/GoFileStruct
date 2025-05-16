@@ -10,6 +10,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strconv"
 )
 
 func GetUploadFile(w http.ResponseWriter, r *http.Request) {
@@ -40,9 +41,13 @@ func GetUploadFile(w http.ResponseWriter, r *http.Request) {
 
 func FileReader() {
 	log.Println("FileReader(+)")
+	var Customer models.CustomerStruc
+	var Product models.ProductStruc
+	var Order models.OrderStruc
 
 	// Open the CSV file
-	file, err := os.Open("csvFile/data.csv")
+	file, err := os.Open("csvFile/saleanalytics.csv")
+	// file, err := os.Open("csvFile/data.csv")
 	if err != nil {
 		log.Fatalf("Failed to open file: %s", err)
 	}
@@ -57,18 +62,35 @@ func FileReader() {
 		log.Fatalf("Failed to read CSV: %s", err)
 	}
 
-	// // Iterate through the records
-	// for i, record := range records[1:] {
-	// 	// Print header separately
-	// 	if i == 0 {
-	// 		fmt.Println("Header:", record)
-	// 	} else {
-	// 		fmt.Printf("Row %d: Name=%s, Age=%s, Location=%s\n", i, record[0], record[1], record[2])
-	// 	}
-	// }
+	for _, col := range records[1:] {
+		// Read each record and assign to struct
+		Order.Order_Id = col[0]
+		Product.ProductId = col[1]
+		Customer.Customer_Id = col[2]
+		Product.ProductName = col[3]
+		Product.Category = col[4]
+		Order.Region = col[5]
+		Order.Date_of_sale = col[6]
+		Order.Quantity_sold, _ = strconv.Atoi(col[7])
+		Order.Unit_price, _ = strconv.Atoi(col[8])
+		Order.Discount, _ = strconv.Atoi(col[9])
+		Order.Shipping_cost, _ = strconv.Atoi(col[10])
+		Order.Payment_method = col[11]
+		Customer.Customer_name = col[12]
+		Customer.Customer_email = col[13]
+		Customer.Customer_address = col[14]
 
-	for j, value := range records[1:] {
-		fmt.Printf("  Column %d: %s\n", j+1, value[0])
+		Order.Product_Id = col[1]
+		Order.Customer_Id = col[2]
+
+		log.Println("Customer: ", Customer)
+		log.Println("Product: ", Product)
+		log.Println("Order: ", Order)
+
+		// Here you can add code to save the structs to the database
+		// db.Create(&Customer)
+		// db.Create(&Product)
+		// db.Create(&Order)
 	}
 
 	log.Println("FileReader(-)")

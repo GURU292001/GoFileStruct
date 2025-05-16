@@ -7,7 +7,6 @@ type CustomerStruc struct {
 	Customer_name    string `gorm:"column:customer_name"`
 	Customer_email   string `gorm:"column:customer_email"`
 	Customer_address string `gorm:"column:customer_address"`
-	Category         string `gorm:"column:category"`
 	CreatedDate      string `gorm:"column:createdDate"`
 	UpdatedDate      string `gorm:"column:updatedDate"`
 }
@@ -35,9 +34,9 @@ type OrderStruc struct {
 	Shipping_cost  int    `gorm:"column:shhipping_cost"`
 	Payment_method string `json:"column:payment_method"`
 	Region         string `json:"column:region"`
-	Category       string `gorm:"column:category"`
-	CreatedDate    string `gorm:"column:createdDate"`
-	UpdatedDate    string `gorm:"column:updatedDate"`
+	// Category       string `gorm:"column:category"`
+	CreatedDate string `gorm:"column:createdDate"`
+	UpdatedDate string `gorm:"column:updatedDate"`
 }
 
 type ResponseStruc struct {
