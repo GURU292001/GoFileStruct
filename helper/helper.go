@@ -42,5 +42,5 @@ func LogError(pErr error) {
 		lFuncName = lDetails.Name()
 	}
 
-	log.Printf("Func: %s | Line: %d | Error: %v\n", lFuncName, lLine, pErr)
+	log.Printf("[ERROR] Func: %s | Line: %d | Error: %v\n", lFuncName, lLine, pErr)
 }
