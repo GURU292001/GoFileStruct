@@ -2,7 +2,8 @@ package helper
 
 import (
 	"encoding/json"
-	global "goFileStruc/Global"
+	globalvar "goFileStruc/GlobalVar"
+
 	"log"
 
 	"runtime"
@@ -17,7 +18,7 @@ type Error_Response struct {
 func GetErrorString(pErrTitle string, pDescription string) string {
 
 	var lErr_Response Error_Response
-	lErr_Response.Status = global.Success
+	lErr_Response.Status = globalvar.Success
 	lErr_Response.ErrorCode = pErrTitle
 	lErr_Response.ErrorMessage = pDescription
 

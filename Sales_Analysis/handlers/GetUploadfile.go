@@ -1,20 +1,16 @@
-package apis
+package handlers
 
 import (
 	"encoding/csv"
 	"encoding/json"
 	"fmt"
-	global "goFileStruc/Global"
+	globalvar "goFileStruc/GlobalVar"
+	"goFileStruc/Sales_Analysis/models"
 	"goFileStruc/helper"
 	"log"
 	"net/http"
 	"os"
 )
-
-type UploadFileStruc struct {
-	Status string `json:"status"`
-	ErrMsg string `json:"errMsg"`
-}
 
 func GetUploadFile(w http.ResponseWriter, r *http.Request) {
 	log.Println("GetUploadFile(+)")
@@ -23,8 +19,8 @@ func GetUploadFile(w http.ResponseWriter, r *http.Request) {
 	(w).Header().Set("Access-Control-Allow-Methods", "GET, OPTIONS")
 	(w).Header().Set("Access-Control-Allow-Headers", " Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, credentials")
 	if r.Method == http.MethodGet {
-		var lResponse UploadFileStruc
-		lResponse.Status = global.Success
+		var lResponse models.ResponseStruc
+		lResponse.Status = globalvar.Success
 		log.Println("Operation Done --------------(+)--")
 		FileReader()
 		log.Println("Operation Done --------------(-)--")
@@ -61,14 +57,19 @@ func FileReader() {
 		log.Fatalf("Failed to read CSV: %s", err)
 	}
 
-	// Iterate through the records
-	for i, record := range records {
-		// Print header separately
-		if i == 0 {
-			fmt.Println("Header:", record)
-		} else {
-			fmt.Printf("Row %d: Name=%s, Age=%s, Location=%s\n", i, record[0], record[1], record[2])
-		}
+	// // Iterate through the records
+	// for i, record := range records[1:] {
+	// 	// Print header separately
+	// 	if i == 0 {
+	// 		fmt.Println("Header:", record)
+	// 	} else {
+	// 		fmt.Printf("Row %d: Name=%s, Age=%s, Location=%s\n", i, record[0], record[1], record[2])
+	// 	}
+	// }
+
+	for j, value := range records[1:] {
+		fmt.Printf("  Column %d: %s\n", j+1, value[0])
 	}
+
 	log.Println("FileReader(-)")
 }

@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	apis "goFileStruc/Sales_Analysis/APIs"
+	"goFileStruc/Sales_Analysis/handlers"
 	"goFileStruc/dbconnection"
 	"log"
 	"net/http"
@@ -34,7 +34,7 @@ func main() {
 	// http.ListenAndServe(":29069", nil)
 
 	lRouter := mux.NewRouter()
-	lRouter.HandleFunc("/uploadFile", apis.GetUploadFile).Methods(http.MethodGet)
+	lRouter.HandleFunc("/uploadFile", handlers.GetUploadFile).Methods(http.MethodGet)
 
 	lSrv := &http.Server{
 		Handler: lRouter,

@@ -1,4 +1,4 @@
-package global
+package globalvar
 
 const (
 	Success = "S"
