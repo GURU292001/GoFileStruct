@@ -6,7 +6,7 @@ func BuildConnection() error {
 	log.Println("BuildConnection (+) ")
 	var lErr error
 
-	G_Db_instance.Mysql_gormdb, G_Db_instance.Mysql_sqldb, lErr = Dbconnection()
+	Gdb_instance.Gormdb, Gdb_instance.Mysql_sqldb, lErr = Dbconnection()
 	if lErr != nil {
 		log.Println("Error (DCBC01) ", lErr.Error())
 		return lErr

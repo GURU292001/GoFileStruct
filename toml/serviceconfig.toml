@@ -1,4 +1,6 @@
-hour = 8
-minute = 0
+##24 hours
+
+hour = 17
+minute =21
 
 AutoRun = "Y"

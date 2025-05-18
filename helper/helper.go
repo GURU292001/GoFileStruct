@@ -1,9 +1,8 @@
 package helper
 
 import (
+	globalvar "ecommerce/GlobalVar"
 	"encoding/json"
-	globalvar "goFileStruc/GlobalVar"
-
 	"log"
 
 	"runtime"

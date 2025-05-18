@@ -25,13 +25,14 @@ import (
 // }
 
 func ReadTomlFile(filename string) (fileDetails interface{}, err error) {
-
+	log.Println("ReadTomlFile(+)")
 	// Decode TOML file
 	if _, qerr := toml.DecodeFile(filename, &fileDetails); err != nil {
 		log.Printf("Error (TRRTF01) decoding TOML file: %v", qerr)
 		return nil, err
 	}
 
+	log.Println("ReadTomlFile(-)")
 	return fileDetails, nil
 }
 

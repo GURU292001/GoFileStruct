@@ -2,8 +2,8 @@ package dbconnection
 
 import (
 	"database/sql"
-	"goFileStruc/helper"
-	"goFileStruc/toml"
+	"ecommerce/helper"
+	"ecommerce/toml"
 	"log"
 
 	"strconv"
@@ -25,13 +25,13 @@ type Db_Details struct {
 	Mysql DatabaseDetails
 }
 
-type Db_instance struct {
-	Mysql_sqldb  *sql.DB
-	Mysql_gormdb *gorm.DB
+type Db_Instance struct {
+	Mysql_sqldb *sql.DB
+	Gormdb      *gorm.DB
 }
 
 // Variable holds the instances of the database connection.
-var G_Db_instance Db_instance
+var Gdb_instance Db_Instance
 
 // Struct for to hold the connection pool configuration
 type connectionpoolconfig struct {
